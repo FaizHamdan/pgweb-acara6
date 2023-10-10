@@ -36,7 +36,8 @@
                             <li><a class="dropdown-item" href="index.html">Jumlah Penduduk</a></li>
                             <li><a class="dropdown-item" href="pendudukjeniskelamin.html">Penduduk Menurut Jenis
                                     Kelamin</a></li>
-                            <li><a class="dropdown-item" href="fasilitaskesehatan.html">Jumlah Fasilitas Kesehatan</a></li>
+                            <li><a class="dropdown-item" href="fasilitaskesehatan.html">Jumlah Fasilitas Kesehatan</a>
+                            </li>
                             <li><a class="dropdown-item" href="curahhujan.html">Jumlah Curah Hujan</a></li>
                             <li><a class="dropdown-item" href="pengangruan.html">Jumlah Penganguran</a></li>
                             <li>
@@ -57,7 +58,7 @@
     <div class="container mt-4">
         <div class="card">
             <div class="card-header">
-                <h5>Jumlah Penduduk Berdasarkan Jenis Kelamin</h5>
+                <h5>Jumlah Curah Hujan</h5>
             </div>
             <div class="card-body">
                 <div id="chart"></div>
@@ -98,76 +99,36 @@
     <script>
         var options = {
             series: [{
-                name: 'Laki-Laki',
-                data: [
-                    16852, 15860, 25788, 36485, 51699, 50127, 65097, 29816, 26573, 43436, 34170, 52751, 36300, 26888, 18438, 18546, 15552
-
-                ]
-            }, {
-                name: 'Perempuan',
-                data: [
-                    16990, 16599, 26179, 36551, 52321, 50580, 66145, 30160, 27286, 43921, 34406, 53422, 36672, 27276, 18542, 19110, 15936
-
-                ]
+                name: "Jumlah Curah Hujan",
+                data: [352.80, 276.10, 245.90, 236.00, 60.10, 209.10, 8.80, 33.90, 133.60, 145.70, 344.80, 409.90]
             }],
             chart: {
-                type: 'bar',
-                height: 350
-            },
-            plotOptions: {
-                bar: {
-                    horizontal: false,
-                    columnWidth: '55%',
-                    endingShape: 'rounded',
-                    dataLabels: {
-                        position: 'top',
-                    },
-                },
+                height: 350,
+                type: 'line',
+                color: '#5871a8',
+                zoom: {
+                    enabled: false
+                }
             },
             dataLabels: {
                 enabled: false
             },
             stroke: {
-                show: true,
-                width: 2,
-                colors: ['transparent']
+                curve: 'straight'
+            },
+            title: {
+                text: 'Jumlah Curah Hujan',
+                align: 'left'
+            },
+            grid: {
+                row: {
+                    colors: ['#5871a8', 'transparent'], // takes an array which will be repeated on columns
+                    opacity: 0.5
+                },
             },
             xaxis: {
-                categories: [
-
-                    'Moyudan', 'Minggir', 'Seyegan', 'Godean', 'Gamping', 'Mlati', 'Depok', 'Berbah', 'Prambanan', 'Kalasan', 'Ngemplak', 'Ngaglik', 'Sleman', 'Tempel', 'Turi', 'Pakem', 'Cangkringan'
-
-                ],
-                title: {
-                    text: 'Kecamatan'
-                }
-            },
-            yaxis: {
-                title: {
-                    text: 'Jiwa'
-                }
-            },
-            fill: {
-                opacity: 1
-            },
-            tooltip: {
-                y: {
-                    formatter: function (val) {
-                        return val + " Jiwa"
-                    }
-                }
-            },
-            dataLabels: {
-                enabled: true,
-                formatter: function (val) {
-                    return val;
-                },
-                offsetY: -20,
-                style: {
-                    fontSize: '6.5px',
-                    colors: ["#304758"]
-                }
-            },
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Nov', 'Oct', 'Dec'],
+            }
         };
 
         var chart = new ApexCharts(document.querySelector("#chart"), options);
